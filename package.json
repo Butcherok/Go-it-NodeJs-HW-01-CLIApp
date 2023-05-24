@@ -20,5 +20,8 @@
   "homepage": "https://github.com/Butcherok/Go-it-NodeJs-HW-01-CLIApp#readme",
   "devDependencies": {
     "nodemon": "^2.0.22"
+  },
+  "dependencies": {
+    "commander": "^10.0.1"
   }
 }
