@@ -1,0 +1,24 @@
+{
+  "name": "go-it-nodejs-hw-01-cliapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index",
+    "start:dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Butcherok/Go-it-NodeJs-HW-01-CLIApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Butcherok/Go-it-NodeJs-HW-01-CLIApp/issues"
+  },
+  "homepage": "https://github.com/Butcherok/Go-it-NodeJs-HW-01-CLIApp#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
