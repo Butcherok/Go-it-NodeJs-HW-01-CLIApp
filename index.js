@@ -1,11 +1,11 @@
 const contacts = require("./contacts");
-
+const { Command } = require("commander");
 const listContacts = require("./contacts").listContacts();
 const getContactById = require("./contacts").getContactById(
   "qdggE76Jtbfd9eWJHrssH"
 );
 
-const { Command } = require("commander");
+
 const program = new Command();
 program
   .option("-a, --action <type>", "choose action")
