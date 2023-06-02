@@ -1,9 +1,5 @@
 const contacts = require("./contacts");
 const { Command } = require("commander");
-const listContacts = require("./contacts").listContacts();
-const getContactById = require("./contacts").getContactById(
-  "qdggE76Jtbfd9eWJHrssH"
-);
 
 const program = new Command();
 program
