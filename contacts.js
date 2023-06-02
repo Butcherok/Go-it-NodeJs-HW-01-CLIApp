@@ -20,7 +20,7 @@ function getContactById(contactId) {
 function removeContact(contactId) {
   fs.readFile(contactsPath)
     .then((data) => JSON.parse(data))
-    .then((contacts) => contacts.filter((contact) => contact.id === contactId))
+    .then((contacts) => contacts.filter((contact) => contact.id !== contactId))
     .then((filtredContacts) => {
       console.table(filtredContacts);
       return filtredContacts;
@@ -38,7 +38,7 @@ function addContact(name, email, phone) {
     .then((data) => JSON.parse(data))
     .then((contacts) => {
       contacts.push({
-        id: (contacts.length + 1).toString(),
+        id: Math.floor(Math.random() * (999 - 100 + 1) + 100).toString(),
         name,
         email,
         phone,
