@@ -5,7 +5,6 @@ const getContactById = require("./contacts").getContactById(
   "qdggE76Jtbfd9eWJHrssH"
 );
 
-
 const program = new Command();
 program
   .option("-a, --action <type>", "choose action")
@@ -18,7 +17,6 @@ program.parse(process.argv);
 
 const argv = program.opts();
 
-// TODO: рефакторить
 function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case "list":
@@ -27,15 +25,20 @@ function invokeAction({ action, id, name, email, phone }) {
       break;
 
     case "get":
-      // ... id
+      console.log(`Contact by ID: ${id}`);
+      contacts.getContactById(id);
       break;
 
     case "add":
-      // ... name email phone
+      console.log(
+        `Contact with name: ${name}, email: ${email}, phone: ${phone} added!`
+      );
+      contacts.addContact(name, email, phone);
       break;
 
     case "remove":
-      // ... id
+      console.log(`Contact by ID removed: ${id}`);
+      contacts.removeContact(id);
       break;
 
     default:
