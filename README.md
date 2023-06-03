@@ -2,17 +2,13 @@
 
 ## Посилання на скріншоти результатів виконання команд
 
-- Отримуємо і виводимо весь список контактів у вигляді таблиці (console.table)
-    [GetList](https://ibb.co/gJWv4XL)
+- Отримуємо і виводимо весь список контактів у вигляді таблиці (console.table) [GetList](https://ibb.co/gJWv4XL)
 
-- Отримуємо контакт по id
-    [GetById](https://ibb.co/GkQQZ2r)
+- Отримуємо контакт по id [GetById](https://ibb.co/GkQQZ2r)
 
-- Додаємо контакт
-    [add](https://ibb.co/zrPhXtk)
+- Додаємо контакт [Add](https://ibb.co/zrPhXtk)
     
-- Видаляємо контакт
-    [Remove](https://ibb.co/mbmYwTP)
+- Видаляємо контакт [Remove](https://ibb.co/mbmYwTP)
 
 # Технічне завдання домашньої роботи 
 
