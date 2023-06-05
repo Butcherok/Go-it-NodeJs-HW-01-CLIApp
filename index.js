@@ -13,33 +13,33 @@ program.parse(process.argv);
 
 const argv = program.opts();
 
-function invokeAction({ action, id, name, email, phone }) {
+const invokeAction = async ({ action, id, name, email, phone }) => {
   switch (action) {
     case "list":
       console.log("Contacts list:");
-      contacts.listContacts();
+      await contacts.listContacts();
       break;
 
     case "get":
       console.log(`Contact by ID: ${id}`);
-      contacts.getContactById(id);
+      await contacts.getContactById(id);
       break;
 
     case "add":
       console.log(
         `Contact with name: ${name}, email: ${email}, phone: ${phone} added!`
       );
-      contacts.addContact(name, email, phone);
+      await contacts.addContact(name, email, phone);
       break;
 
     case "remove":
       console.log(`Contact by ID removed: ${id}`);
-      contacts.removeContact(id);
+      await contacts.removeContact(id);
       break;
 
     default:
       console.warn("\x1B[31m Unknown action type!");
   }
-}
+};
 
 invokeAction(argv);

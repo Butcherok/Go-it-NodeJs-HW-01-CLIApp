@@ -3,58 +3,69 @@ const path = require("path");
 
 const contactsPath = path.resolve("db", "contacts.json");
 
-function listContacts() {
-  fs.readFile(contactsPath)
-    .then((data) => console.table(JSON.parse(data)))
-    .catch((error) => console.log(error.message));
-}
+const updateContacts = async (contacts) =>
+  await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
 
-function getContactById(contactId) {
-  fs.readFile(contactsPath)
-    .then((data) => JSON.parse(data))
-    .then((contacts) => contacts.filter((contact) => contact.id === contactId))
-    .then((contact) => console.table(contact))
-    .catch((error) => console.log(error.message));
-}
+const listContacts = async () => {
+  try {
+    const data = await fs.readFile(contactsPath);
 
-function removeContact(contactId) {
-  fs.readFile(contactsPath)
-    .then((data) => JSON.parse(data))
-    .then((contacts) => contacts.filter((contact) => contact.id !== contactId))
-    .then((filtredContacts) => {
-      console.table(filtredContacts);
-      return filtredContacts;
-    })
-    .then((filtredContacts) => {
-      fs.writeFile(
-        contactsPath,
-        JSON.stringify(filtredContacts, null, 4)
-      ).catch((error) => console.log(error.message));
-    });
-}
+    console.table(JSON.parse(data));
+  } catch (err) {
+    console.log(`Something went very wrong.. ${err.message}`);
+  }
+};
 
-function addContact(name, email, phone) {
-  fs.readFile(contactsPath)
-    .then((data) => JSON.parse(data))
-    .then((contacts) => {
-      contacts.push({
-        id: Math.floor(Math.random() * (999 - 100 + 1) + 100).toString(),
-        name,
-        email,
-        phone,
-      });
-      return contacts;
-    })
-    .then((newContacts) => {
-      console.table(newContacts);
-      return newContacts;
-    })
-    .then((newContacts) => {
-      fs.writeFile(contactsPath, JSON.stringify(newContacts, null, 4)).catch(
-        (error) => console.log(error.message)
-      );
-    });
-}
+const getContactById = async (contactId) => {
+  try {
+    const data = await fs.readFile(contactsPath);
+    const contacts = JSON.parse(data);
+    const filterContacts = contacts.filter(
+      (contact) => contact.id === contactId
+    );
+
+    console.table(filterContacts);
+  } catch (err) {
+    console.log(`Something went very wrong.. ${err.message}`);
+  }
+};
+
+const removeContact = async (contactId) => {
+  try {
+    const data = await fs.readFile(contactsPath);
+    const contacts = JSON.parse(data);
+    const filterContacts = contacts.filter(
+      (contact) => contact.id !== contactId
+    );
+
+    console.table(filterContacts);
+
+    await fs.writeFile(contactsPath, JSON.stringify(filterContacts, null, 4));
+    
+  } catch (err) {
+    console.log(`Something went very wrong.. ${err.message}`);
+  }
+};
+
+const addContact = async (name, email, phone) => {
+  try {
+    const data = await fs.readFile(contactsPath);
+    const contacts = JSON.parse(data);
+    const newContact = {
+      id: Math.floor(Math.random() * (999 - 100 + 1) + 100).toString(),
+      name,
+      email,
+      phone,
+    };
+    const newContactsList = [...contacts, newContact];
+
+    await updateContacts(newContactsList);
+
+    console.table(newContactsList);
+  } catch (err) {
+    console.log(`Something went very wrong.. ${err.message}`);
+  }
+};
 
 module.exports = {
   listContacts,
